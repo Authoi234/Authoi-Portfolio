@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import CanvasLoader from "../Loader";
@@ -20,8 +20,8 @@ const Computers = ({ isMobile }) => {
       <pointLight intensity={1} />
       <primitive
         object={computer.scene}
-        scale={isMobile ? 0.35 : 1}
-         position={isMobile ? [0, -3, -2.2] : [0, -3.25, -1.5]}
+        scale={isMobile ? 0.6 : 1}
+        position={isMobile ? [0, -3.5, -1] : [0, -3.25, -1.5]}
         rotation={[-0.01, -0.2, -0.1]}
       />
     </mesh>
@@ -51,27 +51,27 @@ const ComputersCanvas = () => {
       shadows
       dpr={[1, 2]}
       camera={{
-        position: isMobile ? [10, 3, 5] : [20, 3, 5],  // Better camera positions
-        fov: isMobile ? 35 : 25
+        position: isMobile ? [25, 3, 6] : [20, 3, 5],  // Better camera positions
+        fov: isMobile ? 25 : 25
       }}
-    //   camera={{ position: [20, 3, 5], fov: 25 }}
+      //   camera={{ position: [20, 3, 5], fov: 25 }}
       gl={{ preserveDrawingBuffer: true }}
       style={{
         position: 'absolute',
-        top: '50%',
+        top: '55%',
         transform: 'translateY(-50%)',
         height: isMobile ? '50vh' : '60vh',  // Reduced canvas height
         width: '100%'
       }}
     >
       <Suspense fallback={<CanvasLoader />}>
-         <OrbitControls
+        <OrbitControls
           enableZoom={false}
           enablePan={false}
-          minDistance={5}  // Minimum zoom distance
+          minDistance={20}  // Minimum zoom distance
           maxDistance={20} // Maximum zoom distance
-          maxPolarAngle={Math.PI}  // Full 180° vertical rotation
-          minPolarAngle={0}  // Full 180° vertical rotation
+          maxPolarAngle={Math.PI / 2}  
+          minPolarAngle={Math.PI / 2}  
           enableRotate={true}
           rotateSpeed={0.5}  // Slower rotation
         />

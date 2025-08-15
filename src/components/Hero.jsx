@@ -22,12 +22,12 @@ const Hero = () => {
 
     return (
         <header>
-            <section className="relative w-full min-h-screen flex items-center">
+            <section className="relative w-full min-h-screen md:flex items-center">
 
-                <div className={`${styles.paddingX} absolute inset-0 top-[120px] w-full flex flex-row items-start gap-5 z-10`}>
+                <div className={`${styles.paddingX} absolute inset-0 top-[120px] w-full flex flex-row md:justify-normal justify-center items-start gap-5 z-0`}>
                     <div className="flex flex-col justify-center items-center mt-5">
                         <div>
-                            <h1 className={`${styles.heroHeadText} text-white`}>
+                            <h1 className={`${styles.heroHeadText} text-white z-10`}>
                                 Hi, I am{" "}
                                 <span
                                     style={{
@@ -41,7 +41,7 @@ const Hero = () => {
                                     Authoi
                                 </span>
                             </h1>
-                            <p className={`${styles.heroSubText} mt-2 text-white-100 text-start ${isMobile ? 'mb-8' : ''}`}>
+                            <p className={`${styles.heroSubText} mt-2 z-10 text-white-100 text-start ${isMobile ? 'mb-2' : 'mb-8'}`}>
                                 I am MD. JAWAD JABBAR KHAN AUTHOI, <br /> A Full-Stack Mern-Stack Web developer.
                             </p>
                         </div>
