@@ -2,9 +2,22 @@ import { motion } from "framer-motion"
 import { useEffect, useState } from "react";
 import { styles } from "../styles";
 import ComputersCanvas from "./canvas/Computers"
+import BlobbyMorph from "./blobbyMorph";
 
 const Hero = () => {
     const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        if (window.particlesJS) {
+            window.particlesJS.load(
+                "particles-js",
+                "/particles.json",
+                function () {
+                    console.log("particles config loaded");
+                }
+            );
+        }
+    }, []);
 
     useEffect(() => {
         const mediaQuery = window.matchMedia("(max-width: 768px)"); // Changed to 768px for better tablet support
@@ -23,11 +36,11 @@ const Hero = () => {
     return (
         <header>
             <section className="relative w-full min-h-screen md:flex items-center">
-
+                <div id="particles-js" className="fixed inset-0 w-screen z-20" style={{height: 'calc(100vh-120px)'}}></div>
                 <div className={`${styles.paddingX} absolute inset-0 top-[120px] w-full flex flex-row md:justify-normal justify-center items-start gap-5 z-0`}>
                     <div className="flex flex-col justify-center items-center mt-5">
                         <div>
-                            <h1 className={`${styles.heroHeadText} text-white z-10`}>
+                            <h1 className={`${styles.heroHeadText} text-white z-10 text-center md:text-start`}>
                                 Hi, I am{" "}
                                 <span
                                     style={{
@@ -47,7 +60,12 @@ const Hero = () => {
                         </div>
                     </div>
                 </div>
-                <ComputersCanvas />
+                <div className="z-50"><ComputersCanvas /></div>
+                <div className={`${styles.paddingX} inset-0 w-full flex flex-row md:justify-end justify-start items-start gap-5 z-0`}>
+                    <div className="flex flex-col justify-center items-center mt-5">
+                        <BlobbyMorph />
+                    </div>
+                </div>
 
                 <div className='absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center'>
                     <a href='#about'>
