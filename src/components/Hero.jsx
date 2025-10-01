@@ -36,7 +36,7 @@ const Hero = () => {
     return (
         <header>
             <section className="relative w-full min-h-screen md:flex items-center">
-                <div id="particles-js" className="fixed inset-0 w-screen z-20" style={{height: 'calc(100vh-120px)'}}></div>
+                <div id="particles-js" className="absolute inset-0 w-screen z-20" style={{height: 'calc(100vh-120px)'}}></div>
                 <div className={`${styles.paddingX} absolute inset-0 top-[120px] w-full flex flex-row md:justify-normal justify-center items-start gap-5 z-0`}>
                     <div className="flex flex-col justify-center items-center mt-5">
                         <div>
